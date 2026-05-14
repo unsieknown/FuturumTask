@@ -31,6 +31,7 @@ public class Product {
     private Integer quantity;
 
     @CreationTimestamp
+    @Column(updatable = false)
     private LocalDateTime createdAt;
 
     @UpdateTimestamp

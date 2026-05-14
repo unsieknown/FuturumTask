@@ -34,7 +34,7 @@ public class ProductService {
     @Transactional
     public ProductDto createProduct(ProductDto productDto) {
         Product product = productMapper.toProduct(productDto);
-        return productMapper.toDto(productRepository.save(product));
+        return productMapper.toDto(productRepository.saveAndFlush(product));
     }
 
     @Transactional
@@ -42,7 +42,7 @@ public class ProductService {
         Product product = productMapper.toProduct(productDto);
         product.setProductId(productId);
 
-        return productMapper.toDto(productRepository.save(product));
+        return productMapper.toDto(productRepository.saveAndFlush(product));
     }
 
     @Transactional
