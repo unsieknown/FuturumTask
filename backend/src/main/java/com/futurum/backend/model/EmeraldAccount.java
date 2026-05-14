@@ -15,8 +15,8 @@ import java.util.UUID;
 public class EmeraldAccount {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
     @Column(name = "balance", precision = 11, scale = 2, nullable = false)
     private BigDecimal balance;
