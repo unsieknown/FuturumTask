@@ -26,7 +26,12 @@ public class ProductService {
                 .toList();
     }
 
-    public Optional<ProductDto> getProductById(UUID productId) {
+    public Product getProductById(UUID productId) {
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Product Not Found"));
+    }
+
+    public Optional<ProductDto> getProductDtoById(UUID productId) {
         return productRepository.findById(productId)
                 .map(productMapper::toDto);
     }

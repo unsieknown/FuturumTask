@@ -17,6 +17,11 @@ public class KeywordService {
     private final KeywordRepository keywordRepository;
     private final KeywordMapper keywordMapper;
 
+    public Keyword getKeywordById(Integer keywordId) {
+        return keywordRepository.findById(keywordId)
+                .orElseThrow(() -> new RuntimeException("Keyword Not Found"));
+    }
+
     public List<KeywordDto> getKeywords() {
         return keywordRepository.findAll()
                 .stream().map(keywordMapper::toDto)

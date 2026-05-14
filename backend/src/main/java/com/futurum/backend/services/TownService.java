@@ -19,7 +19,12 @@ public class TownService {
     private final TownRepository townRepository;
     private final TownMapper townMapper;
 
-    public Optional<TownDto> getTownById(UUID townId) {
+    public Town getTownById(UUID townId) {
+        return townRepository.findById(townId)
+                .orElseThrow(() -> new RuntimeException("Town Not Found"));
+    }
+
+    public Optional<TownDto> getTownDtoById(UUID townId) {
         return townRepository.findById(townId)
                 .map(townMapper::toDto);
     }
