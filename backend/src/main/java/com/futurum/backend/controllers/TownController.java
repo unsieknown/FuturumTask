@@ -26,7 +26,7 @@ public class TownController {
 
     @GetMapping("/{townId}")
     public ResponseEntity<TownDto> getTownById(@PathVariable UUID townId) {
-        return townService.getTownById(townId)
+        return townService.getTownDtoById(townId)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
