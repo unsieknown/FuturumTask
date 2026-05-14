@@ -8,5 +8,9 @@ spring:
       enabled: true
   datasource:
     url: jdbc:h2:mem:campaigns
-    username: user
-    password: user
+    username: ${DB_USER:user}
+    password: ${DB_PASSWORD:user}
+
+init:
+  emeraldAccount:
+    initBalance: ${ACCOUNT_INIT_BALANCE:10000000}
