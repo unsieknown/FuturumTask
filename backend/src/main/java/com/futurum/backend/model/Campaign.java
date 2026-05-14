@@ -3,13 +3,11 @@ package com.futurum.backend.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,6 +16,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Entity
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class Campaign {
@@ -51,14 +50,47 @@ public class Campaign {
 
     @NotNull
     @Min(value = 1)
-    private Double bidAmount;
+    private BigDecimal bidAmount;
 
     @NotNull
+    @Min(value = 1)
+    private BigDecimal campaignFund;
+
+    @NotNull
+    @Enumerated(EnumType.STRING)
     private CampaignStatus status = CampaignStatus.OFF;
+
+    private Integer radius;
+
+    private boolean archived = false;
 
     @CreationTimestamp
     private LocalDateTime createdDate;
 
     @UpdateTimestamp
     private LocalDateTime updatedDate;
+
+    public void addProduct(Product product) {
+        this.products.add(product);
+    }
+
+    public void removeProduct(Product product) {
+        this.products.remove(product);
+    }
+
+    public void addKeyword(Keyword keyword) {
+        this.keywords.add(keyword);
+    }
+
+    public void removeKeyword(Keyword keyword) {
+        this.keywords.remove(keyword);
+    }
+
+    public void addTown(Town town) {
+        this.towns.add(town);
+    }
+
+    public void removeTown(Town town) {
+        this.towns.remove(town);
+    }
 }
