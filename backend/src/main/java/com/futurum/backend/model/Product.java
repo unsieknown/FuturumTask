@@ -45,4 +45,17 @@ public class Product {
         for (Campaign campaign : campaigns)
             campaign.getProducts().remove(this);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Product product = (Product) o;
+        return getProductId() != null && getProductId().equals(product.getProductId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getProductId().hashCode();
+    }
 }

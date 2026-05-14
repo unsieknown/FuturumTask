@@ -35,4 +35,17 @@ public class Keyword {
         for (Campaign campaign : campaigns)
             campaign.getKeywords().remove(this);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Keyword keyword = (Keyword) o;
+        return getId() != null && getId().equals(keyword.getId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
+    }
 }

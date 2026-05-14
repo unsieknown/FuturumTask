@@ -37,4 +37,17 @@ public class Town {
         for (Campaign campaign : campaigns)
             campaign.getTowns().remove(this);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Town town = (Town) o;
+        return getTownId() != null && getTownId().equals(town.getTownId());
+    }
+
+    @Override
+    public int hashCode() {
+        return getTownId().hashCode();
+    }
 }
