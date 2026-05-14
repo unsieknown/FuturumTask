@@ -1,0 +1,9 @@
+services:
+  futurum-task:
+    image: mordiniaa/futurum-task
+    ports:
+      - "8080:8080"
+    environment:
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      ACCOUNT_INIT_BALANCE: ${ACCOUNT_INIT_BALANCE}
