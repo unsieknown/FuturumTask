@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -18,7 +19,7 @@ public interface CampaignRepository extends JpaRepository<Campaign, UUID> {
     @Query("""
             update Campaign c
             set c.campaignName = :campaignName,
-                c.status = :staus,
+                c.status = :status,
                 c.radius = :radius,
                 c.updatedDate = CURRENT TIMESTAMP
             where c.campaignId = :campaignId
@@ -36,7 +37,7 @@ public interface CampaignRepository extends JpaRepository<Campaign, UUID> {
 
     Optional<Campaign> findCampaignByCampaignIdAndArchivedFalse(UUID campaignId);
 
-    Optional<Campaign> findCampaignsByArchivedFalse();
+    List<Campaign> findCampaignsByArchivedFalse();
 
     boolean existsCampaignByCampaignIdAndArchivedFalse(UUID campaignId);
 }

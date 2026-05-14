@@ -1,5 +1,7 @@
 package com.futurum.backend.dto;
 
+import com.fasterxml.jackson.annotation.JacksonInject;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.futurum.backend.model.CampaignStatus;
 import lombok.*;
 
@@ -11,6 +13,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Builder
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @NoArgsConstructor
 @AllArgsConstructor
 public class CampaignDto {

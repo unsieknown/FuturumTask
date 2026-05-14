@@ -17,7 +17,9 @@ public class CampaignMapper {
         return Campaign.builder()
                 .campaignName(campaignDto.getCampaignName())
                 .bidAmount(campaignDto.getBidAmount())
+                .campaignFund(campaignDto.getCampaignFund())
                 .status(campaignDto.getStatus())
+                .radius(campaignDto.getRadius())
                 .build();
     }
 
@@ -25,12 +27,13 @@ public class CampaignMapper {
 
         return CampaignDto.builder().campaignId(campaign.getCampaignId())
                 .campaignName(campaign.getCampaignName())
-                .towns(campaign.getTowns().stream().map(townMapper::toDto).toList())
-                .products(campaign.getProducts().stream().map(productMapper::toDto).toList())
-                .keywords(campaign.getKeywords().stream().map(keywordMapper::toDto).toList())
+                .towns(campaign.getTowns() != null ? campaign.getTowns().stream().map(townMapper::toDto).toList() : null)
+                .products(campaign.getProducts() != null ? campaign.getProducts().stream().map(productMapper::toDto).toList() : null)
+                .keywords(campaign.getKeywords() != null ? campaign.getKeywords().stream().map(keywordMapper::toDto).toList() : null)
                 .bidAmount(campaign.getBidAmount())
                 .campaignFund(campaign.getCampaignFund())
                 .status(campaign.getStatus())
+                .radius(campaign.getRadius())
                 .createdDate(campaign.getCreatedDate())
                 .updatedDate(campaign.getUpdatedDate())
                 .build();
